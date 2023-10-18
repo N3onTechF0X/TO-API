@@ -7,7 +7,7 @@ from errors import *
 
 __all__ = ['get_profile', 'get_test_servers', 'get_top', 'NotFoundError', 'RequestError', 'RatingsIndexError', 'InvalidRangeError']
 
-async def get_profile(nickname: str) -> UserProfile:
+def get_profile(nickname: str) -> UserProfile:
     """
     Получает профиль пользователя по его никнейму.
 
@@ -25,7 +25,7 @@ async def get_profile(nickname: str) -> UserProfile:
         raise NotFoundError(nickname)
     return UserProfile(data["response"])
 
-async def get_top() -> Top:
+def get_top() -> Top:
     """
     Получает топ игроков.
 
@@ -38,7 +38,7 @@ async def get_top() -> Top:
         raise RequestError(response.status_code)
     return Top(response.json()["response"])
 
-async def get_test_servers() -> TestServersInfo:
+def get_test_servers() -> TestServersInfo:
     """
     Получает информацию о тестовых серверах.
 
